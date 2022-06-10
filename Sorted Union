@@ -1,0 +1,49 @@
+/*
+Sorted Union
+Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+
+The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+*/
+
+
+// Solution 1
+
+function uniteUnique(arr, ...kwargs) {
+
+ const kwargArr = [...kwargs] // array of kwargs
+ let newArr = []
+// First I make sure there isnt any replicates in arr
+  arr.forEach((num)=>{
+    if(!newArr.includes(num)){
+      newArr.push(num)
+    }
+
+  })
+
+   // for each array in kwargs
+  kwargArr
+          .forEach((array)=>{
+                  newArr
+                  // I will push al numbers not included in newArr
+                      .push(... // I want to push the result of filter, without an array structure
+                            array.filter( (num)  => 
+                                !newArr.includes(num)))
+                   })
+
+  return newArr;
+}
+
+console.log(uniteUnique([1, 3, 2, 3], [5, 2, 1, 4], [2, 1]))
+
+
+
+// Solution 2 After discovering the method flat() and stackoverflowing it
+
+function uniteUnique(...arg) {
+  let flatArr = [...arg].flat()
+  return flatArr.filter((item, ind, arr) => arr.indexOf(item) === ind);
+}
+
+console.log(uniteUnique([1, 3, 2, 3], [5, 2, 1, 4], [2, 1]))
