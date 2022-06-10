@@ -1,0 +1,23 @@
+/*
+Find the missing letter in the passed letter range and return it.
+
+If all letters are present in the range, return undefined.
+*/
+
+function fearNotLetter(str) {
+
+  const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+  let array = str.split('')
+
+  for (let i = 0; i < array.length; i++ ){
+      // All of the letters must be consecutive indexes in alphabet. If not, it means that there is a jump in the index
+      if(alphabet.indexOf(array[i+1]) - alphabet.indexOf(array[i]) == 2){
+            return alphabet[alphabet.indexOf(array[i])+1]
+      } 
+  }
+  
+  return undefined
+ 
+}
+
+console.log(fearNotLetter("stvwx"));
