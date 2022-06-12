@@ -11,18 +11,18 @@ function convertHTML(str) {
               '>':'&gt;',
               '"':'&quot;',
               "'":'&apos;'}
-
-  let match = str.match(/[\&\<\>\'\"]/g)
-
-  // Since match returns an array with the matches it did, I can use array methods on it
-  match.forEach(char => {
-   str = str.replace(char, dicc[char])
-  } )
+let regex = /[\&\<\>\'\"]/g
+// Since match returns an array with the matches it did, I can use array methods on it
+  if(regex.test(str)){
+        str .match(regex)
+            .forEach(char => {
+                   str = str.replace(char, dicc[char])
+                  }           )}
 
   return str;
 }
 
-console.log(convertHTML("Hamburgers & Pizza < Tacos"));
+console.log(convertHTML('acv'));
 
 
 // Solution 2
