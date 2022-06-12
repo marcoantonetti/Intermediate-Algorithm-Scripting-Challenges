@@ -11,13 +11,8 @@ function convertHTML(str) {
               '>':'&gt;',
               '"':'&quot;',
               "'":'&apos;'}
-              
-  let regex = RegExp(/[\&\<\>\'\"]/,'g')
-  let match = []
 
-  if(regex.test(str)){
-     match = str.match(regex)
-  }
+  let match = str.match(/[\&\<\>\'\"]/g)
 
   // Since match returns an array with the matches it did, I can use array methods on it
   match.forEach(char => {
@@ -28,6 +23,7 @@ function convertHTML(str) {
 }
 
 console.log(convertHTML("Hamburgers & Pizza < Tacos"));
+
 
 // Solution 2
 
