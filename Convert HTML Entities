@@ -1,0 +1,63 @@
+/*
+Convert HTML Entities
+Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+*/
+
+// Solution 1
+function convertHTML(str) {
+
+  let dicc = {'&': '&amp;',
+              '<': '&lt;' , 
+              '>':'&gt;',
+              '"':'&quot;',
+              "'":'&apos;'}
+              
+  let regex = RegExp(/[\&\<\>\'\"]/,'g')
+  let match = []
+
+  if(regex.test(str)){
+     match = str.match(regex)
+  }
+
+  // Since match returns an array with the matches it did, I can use array methods on it
+  match.forEach(char => {
+   str = str.replace(char, dicc[char])
+  } )
+
+  return str;
+}
+
+console.log(convertHTML("Hamburgers & Pizza < Tacos"));
+
+// Solution 2
+
+// Other solution would be to not use regex, convert the str into an array and use switch
+// But for each element in the array it executes the cases, so this would be more memory consuming / less efficient
+
+function convertHTML(str) {
+
+  var temp = str.split("");
+
+  for (var i = 0; i < temp.length; i++) {
+    switch (temp[i]) {
+      case "<":
+        temp[i] = "&lt;";
+        break;
+      case "&":
+        temp[i] = "&amp;";
+        break;
+      case ">":
+        temp[i] = "&gt;";
+        break;
+      case '"':
+        temp[i] = "&quot;";
+        break;
+      case "'":
+        temp[i] = "&apos;";
+        break;
+    }
+  }
+
+  temp = temp.join("");
+  return temp;
+}
