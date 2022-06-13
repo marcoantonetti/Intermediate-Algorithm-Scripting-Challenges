@@ -12,7 +12,7 @@ function steamrollArray(arr) {
 
 steamrollArray([1, [2], [3, [[4]]]]);
 
-// Solution 2 Or just use the proper method provided by ES5
+// Solution 2 Or just use the proper method provided by ES5. Sometimes, dont over do it. If there is a method, apply it and solve the problem
 
 function steamrollArray(arr) {
 
