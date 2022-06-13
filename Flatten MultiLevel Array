@@ -2,8 +2,19 @@
 Flatten a nested array. You must account for varying levels of nesting.
 */
 
-function steamrollArray(arr) {
+// Solution 1: Use recursion, until none of the elements in arr are arrays. Keep calling the function.
+when it its in the deeper level start flatening it
 
+function steamrollArray(arr) {
+  const flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
+// Solution 2 Or just use the proper method provided by ES5
+
+function steamrollArray(arr) {
 
   return  arr.flat(Infinity);
 
